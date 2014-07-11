@@ -2,6 +2,7 @@
 
 var TAU = Math.PI * 2;
 var ANGLE_OFFSET = -Math.PI / 2;
+var ANGLE_MAX = TAU * 0.9;
 
 var polarToCartesian = function (x, y, radius, radians) {
     return [
@@ -20,11 +21,11 @@ app.directive('progressArc', function () {
     return {
         restrict: 'E',
         scope: {
-            width:       '@',
-            height:      '@',
+            width: '@',
+            height: '@',
             strokeWidth: '@',
-            stroke:      '@',
-            progress:    '@',
+            stroke: '@',
+            progress: '@',
             counterClockwise: '@'
         },
         link: function (scope, element, attr) {
@@ -37,22 +38,26 @@ app.directive('progressArc', function () {
 
                 var centerX = scope.width / 2;
                 var centerY = scope.height / 2;
-                var radius = (Math.min(scope.width, scope.height) - scope.strokeWidth) / 2;
-                var largeArc = scope.progress > 0.5 ? 1 : 0;
+                var minDimension = Math.min(scope.width, scope.height);
 
-                var p1 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET);
-
-                var clockwise = parseInt(scope.counterClockwise) ? 0 : 1;
-
-                if (clockwise) {
-                    var p2 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET + decimalToRadian(
-                        scope.progress >= 1.0 ? 0.9 : scope.progress
-                    ));
-                } else {
-                    var p2 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET - decimalToRadian(
-                        scope.progress >= 1.0 ? 0.9 : scope.progress
-                    ));
+                // Cap stroke width so that it's not larger than the radius.
+                if (scope.strokeWidth * 2 > minDimension) {
+                    scope.strokeWidth = minDimension / 2;
                 }
+
+                var radius = (minDimension - scope.strokeWidth) / 2;
+                var largeArc = scope.progress > 0.5 ? 1 : 0;
+                var p1 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET);
+                var clockwise = parseInt(scope.counterClockwise) ? 0 : 1;
+                var angle = scope.progress >= 1.0
+                    ? ANGLE_MAX
+                    : decimalToRadian(scope.progress);
+                var p2 = polarToCartesian(
+                    centerX,
+                    centerY,
+                    radius,
+                    clockwise ? ANGLE_OFFSET + angle : ANGLE_OFFSET - angle
+                );
 
                 var d = [
                     'M', p1[0], p1[1],
