@@ -1,11 +1,11 @@
 {
-  "name": "angular-circular-progress",
+  "name": "angular-progress-arc",
   "version": "0.0.1",
   "authors": [
     "Mathew Byrne <mathewbyrne@gmail.com>"
   ],
-  "description": "AngularJS directive for displaying circular progress meters.",
-  "main": "angular-circular-progress.js",
+  "description": "AngularJS directive for displaying a circular progress meter.",
+  "main": "angular-progress-arc.js",
   "keywords": [
     "angularjs",
     "directive",

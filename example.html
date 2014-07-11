@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="example">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>angular-progress-arc example</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="angular-progress-arc.js"></script>
+    <script>
+        var app = angular.module('example', ['angular-progress-arc']);
+        app.controller('ExampleCtrl', function ($scope) {
+            $scope.progress = 0.5;
+            $scope.strokeWidth = 20;
+            $scope.stroke = 'black';
+        });
+    </script>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .wrapper {
+            width: 350px;
+            margin: 0 auto;
+        }
+        svg {
+            display: block;
+            margin: 0 auto 20px;
+        }
+        .control {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+        label {
+            display: inline-block;
+            width: 40%;
+            text-align: right;
+            padding-right: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" ng-controller="ExampleCtrl">
+        <progress-arc width="200" height="200" stroke="{{ stroke }}" stroke-width="{{ strokeWidth }}" progress="{{ progress }}"></progress-arc>
+        <div class="control">
+            <label for="progress">Progress</label>
+            <input type="range" min="0" max="1" step="0.01" ng-model="progress" id="progress" />
+            <span>{{ progress }}</span>
+        </div>
+        <div class="control">
+            <label for="stroke-width">Stroke Width</label>
+            <input type="range" min="1" max="50" step="1" ng-model="strokeWidth" id="stroke-width" />
+            <span>{{ strokeWidth }}</span>
+        </div>
+        <div class="control">
+            <label for="stroke">Stroke</label>
+            <select id="stroke" ng-model="stroke">
+                <option value="red">red</option>
+                <option value="black">black</option>
+                <option value="#abcabc">#abcabc</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
