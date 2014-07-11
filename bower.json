@@ -1,0 +1,27 @@
+{
+  "name": "angular-circular-progress",
+  "version": "0.0.1",
+  "authors": [
+    "Mathew Byrne <mathewbyrne@gmail.com>"
+  ],
+  "description": "AngularJS directive for displaying circular progress meters.",
+  "main": "angular-circular-progress.js",
+  "keywords": [
+    "angularjs",
+    "directive",
+    "progress",
+    "svg"
+  ],
+  "license": "MIT",
+  "homepage": "http://mathewbyrne.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.19"
+  }
+}
