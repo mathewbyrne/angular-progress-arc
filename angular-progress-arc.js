@@ -1,5 +1,8 @@
 (function () {
 
+var TAU = Math.PI * 2;
+var ANGLE_OFFSET = -Math.PI / 2;
+
 var polarToCartesian = function (x, y, radius, radians) {
     return [
         x + radius * Math.cos(radians),
@@ -8,7 +11,7 @@ var polarToCartesian = function (x, y, radius, radians) {
 };
 
 var decimalToRadian = function (decimal) {
-    return (decimal * 2 * Math.PI) - (Math.PI / 2);
+    return (decimal * TAU);
 };
 
 var app = angular.module('angular-progress-arc', []);
@@ -21,7 +24,8 @@ app.directive('progressArc', function () {
             height:      '@',
             strokeWidth: '@',
             stroke:      '@',
-            progress:    '@'
+            progress:    '@',
+            counterClockwise: '@'
         },
         link: function (scope, element, attr) {
 
@@ -35,19 +39,32 @@ app.directive('progressArc', function () {
                 var centerY = scope.height / 2;
                 var radius = (Math.min(scope.width, scope.height) - scope.strokeWidth) / 2;
                 var largeArc = scope.progress > 0.5 ? 1 : 0;
-                var p1 = polarToCartesian(centerX, centerY, radius, decimalToRadian(0));
-                var p2 = polarToCartesian(centerX, centerY, radius, decimalToRadian(
-                    scope.progress >= 1.0 ? 0.9 : scope.progress
-                ));
 
-                var d =[
+                var p1 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET);
+
+                var clockwise = parseInt(scope.counterClockwise) ? 0 : 1;
+
+                if (clockwise) {
+                    var p2 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET + decimalToRadian(
+                        scope.progress >= 1.0 ? 0.9 : scope.progress
+                    ));
+                } else {
+                    var p2 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET - decimalToRadian(
+                        scope.progress >= 1.0 ? 0.9 : scope.progress
+                    ));
+                }
+
+                var d = [
                     'M', p1[0], p1[1],
-                    'A', radius, radius, 0, largeArc, 1, p2[0], p2[1]
+                    'A', radius, radius, 0, largeArc, clockwise, p2[0], p2[1]
                 ];
 
+                // A complete circle is not possible with a path and a single
+                // arc call. So an additional arc is created here to join back
+                // to the initial point.
                 if (scope.progress >= 1.0) {
                     d = d.concat([
-                        'A', radius, radius, 0, 0, 1, p1[0], p1[1]
+                        'A', radius, radius, 0, 0, clockwise, p1[0], p1[1]
                     ]);
                 }
 
