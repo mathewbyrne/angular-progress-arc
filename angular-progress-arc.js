@@ -25,18 +25,10 @@ app.directive('progressArc', function () {
         },
         link: function (scope, element, attr) {
 
-            if (!scope.strokeWidth) {
-                scope.strokeWidth = 10;
-            }
-
-            if (!scope.stroke) {
-                scope.stroke = 'black';
-            }
-
             scope.getDescription = function () {
 
                 if (scope.progress <= 0) {
-                    return '';
+                    return 'M 0 0';
                 }
 
                 var centerX = scope.width / 2;
