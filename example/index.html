@@ -39,7 +39,7 @@
 </head>
 <body>
     <div class="wrapper" ng-controller="ExampleCtrl">
-        <progress-arc width="200" height="200" stroke="{{ stroke }}" stroke-width="{{ strokeWidth }}" progress="progress" counter-clockwise="{{ counterClockwise }}"></progress-arc>
+        <progress-arc size="200" stroke="{{ stroke }}" stroke-width="{{ strokeWidth }}" progress="progress" counter-clockwise="{{ counterClockwise }}"></progress-arc>
         <div class="control">
             <label for="progress">Progress</label>
             <input type="range" min="0" max="1" step="0.01" ng-model="progress" id="progress" />
@@ -66,7 +66,7 @@
             $scope.progress = 0.75;
             $scope.strokeWidth = 50;
             $scope.stroke = '#333';
-            $scope.counterClockwise = '1';
+            $scope.counterClockwise = '0';
         });
     </script>
 </body>

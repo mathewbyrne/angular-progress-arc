@@ -26,20 +26,21 @@ Include the script in your application and include the `angular-progress-arc` mo
 Add a `progress-arc` element to your application as required.
 
     <progress-arc
-        width="{integer}"
-        height="{integer}"
+        size="{integer}"
         stroke="{string}"
         stroke-width="{integer}"
-        progress="{expression}">
+        progress="{expression}"
+        counter-clockwise="{string}">
     </progress-arc>
 
 Attributes
 ----------
 
-- `width` and `height` define the pixel width and height for the svg element.  This will default to 200 × 200.
+- `size` defines the pixel width and height for the svg element.  This will default to 200 × 200.
 - `stroke` defines the color of the progress arc. This should be a valid [stroke property](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#Stroke) for an SVG path element.  If not specified it will default to __black__. 
-- `stroke-width` defines the width of the progress arc line in pixels. This should be a value between 1 and half the minimum of `width` and `height`.
+- `stroke-width` defines the width of the progress arc line in pixels. This should be a value between 1 and `size` / 2.
 - `progress` is an expression that should evaluate to a float value between 0.0 and 1.0; where 0.0 is an empty progress arc, and 1.0 is a full ring.
+- `counter-clockwise` if this attribute is present and set to a "truthy" value (true, yes, 1) the progress bar will render in a counter-clockwise direction. 
 
 Styling
 =======
