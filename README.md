@@ -14,24 +14,30 @@ Features
 Installation
 ============
 
-    bower install angular-progress-arc
+```shell
+bower install angular-progress-arc
+```
     
 Usage
 =====
 
 Include the script in your application and include the `angular-progress-arc` module as a dependency in your application module.
 
-    angular.module('myApp', ['angular-progress-arc']);
+```javascript
+angular.module('myApp', ['angular-progress-arc']);
+```
 
 Add a `progress-arc` element to your application as required.
 
-    <progress-arc
-        size="{integer}"
-        stroke="{string}"
-        stroke-width="{integer}"
-        progress="{expression}"
-        counter-clockwise="{string}">
-    </progress-arc>
+```html
+<progress-arc
+    size="{integer}"
+    stroke="{string}"
+    stroke-width="{integer}"
+    progress="{expression}"
+    counter-clockwise="{string}">
+</progress-arc>
+```
 
 Attributes
 ----------
@@ -47,11 +53,13 @@ Styling
 
 As well as using attributes of the directive element, a progress arc can be styled using CSS.
 
-    // Use a more complex selector in your application to avoid styling other SVG elements.
-    path {
-        stroke: rgba(0, 0, 0, 0.1);
-        stroke-linecap: round;
-    }
+```css
+// Use a more complex selector in your application to avoid styling other SVG elements.
+path {
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-linecap: round;
+}
+```
 
 If you use CSS for styling, try to avoid setting a `stroke-width` property since this is used to calculate the position of the arc inside the SVG element.
 
