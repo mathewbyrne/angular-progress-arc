@@ -33,11 +33,13 @@
      * @returns {boolean}
      */
     var resolveBoolean = function (input) {
-        input = input.toLowerCase();
-        var truthValues = ['true', 'yes', '1'];
-        for (var i = 0; i < truthValues.length; i++) {
-            if (truthValues[i] === input) {
-                return true;
+        if (input && typeof input === 'string') {
+            input = input.toLowerCase();
+            var truthValues = ['true', 'yes', '1'];
+            for (var i = 0; i < truthValues.length; i++) {
+                if (truthValues[i] === input) {
+                    return true;
+                }
             }
         }
         return false;
