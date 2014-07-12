@@ -1,6 +1,6 @@
 {
   "name": "angular-progress-arc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "authors": [
     "Mathew Byrne <mathewbyrne@gmail.com>"
   ],
@@ -20,7 +20,10 @@
     "bower_components",
     "test",
     "tests",
-    "example"
+    "example",
+    "bower.json",
+    "package.json",
+    "Gruntfile.js"
   ],
   "dependencies": {
     "angular": ">=1.2.19"
