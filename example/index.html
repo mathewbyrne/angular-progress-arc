@@ -3,20 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>angular-progress-arc example</title>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="angular-progress-arc.js"></script>
-    <script>
-        var app = angular.module('example', ['angular-progress-arc']);
-        app.controller('ExampleCtrl', function ($scope) {
-            $scope.progress = 0.5;
-            $scope.strokeWidth = 20;
-            $scope.stroke = 'black';
-            $scope.counterClockwise = '1';
-        });
-    </script>
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
     <style>
         body {
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: "PT Sans", Helvetica, Arial, sans-serif;
+            color: #333;
+            font-size: 18px;
         }
         * {
             box-sizing: border-box;
@@ -31,13 +23,13 @@
         }
         .control {
             display: block;
-            margin-bottom: 0.5em;
+            margin-bottom: 1em;
         }
         label {
             display: inline-block;
-            width: 40%;
             text-align: right;
             padding-right: 0.5em;
+            width: 40%;
         }
         .radio label {
             width: 100%;
@@ -50,25 +42,32 @@
         <progress-arc width="200" height="200" stroke="{{ stroke }}" stroke-width="{{ strokeWidth }}" progress="{{ progress }}" counter-clockwise="{{ counterClockwise }}"></progress-arc>
         <div class="control">
             <label for="progress">Progress</label>
-            <input type="range" min="0" max="1" step="0.01" ng-model="progress" id="progress" />
-            <span>{{ progress }}</span>
+            <input type="range" min="0" max="1" step="0.001" ng-model="progress" id="progress" />
+            <span>{{ progress | number:3 }}</span>
         </div>
         <div class="control">
             <label for="stroke-width">Stroke Width</label>
-            <input type="range" min="1" max="300" step="1" ng-model="strokeWidth" id="stroke-width" />
+            <input type="range" min="1" max="100" step="1" ng-model="strokeWidth" id="stroke-width" />
             <span>{{ strokeWidth }}</span>
         </div>
         <div class="control">
             <label for="stroke">Stroke</label>
-            <select id="stroke" ng-model="stroke">
-                <option value="red">red</option>
-                <option value="black">black</option>
-                <option value="#abcabc">#abcabc</option>
-            </select>
+            <input type="text" ng-model="stroke">
         </div>
         <div class="control radio">
             <label><input type="checkbox" ng-model="counterClockwise" ng-true-value="1" ng-false-value="0" /> Counter-clockwise</label>
         </div>
     </div>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../angular-progress-arc.js"></script>
+    <script>
+        var app = angular.module('example', ['angular-progress-arc']);
+        app.controller('ExampleCtrl', function ($scope) {
+            $scope.progress = 0.75;
+            $scope.strokeWidth = 50;
+            $scope.stroke = '#333';
+            $scope.counterClockwise = '1';
+        });
+    </script>
 </body>
 </html>
