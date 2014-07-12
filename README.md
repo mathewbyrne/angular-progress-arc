@@ -3,6 +3,8 @@ angular-progress-arc
 
 An [AngularJS](https://angularjs.org/) directive for displaying a circular progress meter.
 
+<p align="center"><img src="http://mathewbyrne.github.io/angular-progress-arc/img/arcs.png" /></p>
+
 Features
 ========
 
