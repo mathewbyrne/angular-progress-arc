@@ -2,10 +2,6 @@
 
     'use strict';
 
-    var TAU = Math.PI * 2;
-    var ANGLE_OFFSET = -Math.PI / 2;
-    var ANGLE_MAX = TAU * 0.9;
-
     var polarToCartesian = function (x, y, radius, radians) {
         return [
             x + radius * Math.cos(radians),
@@ -14,11 +10,13 @@
     };
 
     var decimalToRadian = function (decimal) {
-        return (decimal * TAU);
+        return (decimal * Math.PI * 2);
     };
 
-    var app = angular.module('angular-progress-arc', []);
+    var ANGLE_OFFSET = -Math.PI / 2;
+    var ANGLE_MAX = decimalToRadian(0.99);
 
+    var app = angular.module('angular-progress-arc', []);
     app.directive('progressArc', function () {
         return {
             restrict: 'E',
@@ -27,15 +25,17 @@
                 height: '@',
                 strokeWidth: '@',
                 stroke: '@',
-                progress: '@',
-                counterClockwise: '@'
+                counterClockwise: '@',
+                progress: '&'
             },
             link: function (scope, element, attr) {
 
                 scope.getDescription = function () {
 
-                    if (scope.progress <= 0) {
-                        return 'M 0 0';
+                    var progress = scope.progress();
+
+                    if (progress <= 0.0) {
+                        return 'M 0 0'; // Empty string causes error on Chrome.
                     }
 
                     var centerX = scope.width / 2;
@@ -43,16 +43,18 @@
                     var minDimension = Math.min(scope.width, scope.height);
 
                     // Cap stroke width so that it's not larger than the radius.
-                    if (scope.strokeWidth * 2 > minDimension) {
-                        scope.strokeWidth = minDimension / 2;
-                    }
+                    scope.strokeWidth = Math.min(scope.strokeWidth, minDimension / 2);
+
                     // -1 from radius to prevent clipping edge of svg element.
                     var radius = (minDimension - scope.strokeWidth) / 2 - 1;
-                    var largeArc = scope.progress > 0.5 ? 1 : 0;
-                    var p1 = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET);
+
+                    var startPoint = polarToCartesian(centerX, centerY, radius, ANGLE_OFFSET);
+
+                    var largeArc = progress > 0.5 ? 1 : 0;
+
                     var clockwise = parseInt(scope.counterClockwise) ? 0 : 1;
-                    var angle = scope.progress >= 1.0 ? ANGLE_MAX : decimalToRadian(scope.progress);
-                    var p2 = polarToCartesian(
+                    var angle = progress >= 1.0 ? ANGLE_MAX : decimalToRadian(progress);
+                    var endPoint = polarToCartesian(
                         centerX,
                         centerY,
                         radius,
@@ -60,16 +62,16 @@
                     );
 
                     var d = [
-                        'M', p1[0], p1[1],
-                        'A', radius, radius, 0, largeArc, clockwise, p2[0], p2[1]
+                        'M', startPoint[0], startPoint[1],
+                        'A', radius, radius, 0, largeArc, clockwise, endPoint[0], endPoint[1]
                     ];
 
                     // A complete circle is not possible with a path and a single
                     // arc call. So an additional arc is created here to join back
                     // to the initial point.
-                    if (scope.progress >= 1.0) {
+                    if (progress >= 1.0) {
                         d = d.concat([
-                            'A', radius, radius, 0, 0, clockwise, p1[0], p1[1]
+                            'A', radius, radius, 0, 0, clockwise, startPoint[0], startPoint[1]
                         ]);
                     }
 
