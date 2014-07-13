@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
         .wrapper {
-            width: 350px;
+            width: 380px;
             margin: 0 auto;
         }
         svg {
@@ -31,19 +31,30 @@
             padding-right: 0.5em;
             width: 40%;
         }
+        input[type=text] {
+            width: 5em;
+        }
         .radio label {
             width: 100%;
             text-align: center;
+        }
+        circle {
+            transition: stroke-dashoffset 0.1s linear;
         }
     </style>
 </head>
 <body>
     <div class="wrapper" ng-controller="ExampleCtrl">
-        <progress-arc stroke="{{ stroke }}" stroke-width="{{ strokeWidth }}" progress="progress" counter-clockwise="{{ counterClockwise }}"></progress-arc>
+        <progress-arc size="{{ size }}" stroke="{{ stroke }}" stroke-width="{{ strokeWidth }}" progress="progress" counter-clockwise="{{ counterClockwise }}"></progress-arc>
         <div class="control">
             <label for="progress">Progress</label>
             <input type="range" min="0" max="1" step="0.01" ng-model="progress" id="progress" />
             <span>{{ progress | number: 2 }}</span>
+        </div>
+        <div class="control">
+            <label for="size">Size</label>
+            <input type="range" name="size" min="10" max="400" ng-model="size" id="size" />
+            <span>{{ size }}px</span>
         </div>
         <div class="control">
             <label for="stroke-width">Stroke Width</label>
@@ -63,6 +74,7 @@
     <script>
         var app = angular.module('example', ['angular-progress-arc']);
         app.controller('ExampleCtrl', function ($scope) {
+            $scope.size = 200;
             $scope.progress = 0.75;
             $scope.strokeWidth = 50;
             $scope.stroke = '#333';
