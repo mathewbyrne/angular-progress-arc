@@ -1,6 +1,6 @@
 {
   "name": "angular-progress-arc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "AngularJS directive for displaying a circular progress meter.",
   "main": "angular-progress-arc.js",
   "directories": {
