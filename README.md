@@ -16,9 +16,13 @@ Features
 Installation
 ============
 
+This module can be installed using bower:
+
 ```shell
-bower install angular-progress-arc
+bower install angular-progress-arc --save
 ```
+
+Otherwise, simply add the `angular-progress-arc.min.js` file to your project. 
     
 Usage
 =====
@@ -37,7 +41,8 @@ Add a `progress-arc` element to your application as required.
     stroke="{string}"
     stroke-width="{integer}"
     progress="{expression}"
-    counter-clockwise="{string}">
+    counter-clockwise="{string}"
+    background="{string}">
 </progress-arc>
 ```
 
@@ -48,7 +53,8 @@ Attributes
 - `stroke` defines the color of the progress arc. This should be a valid [stroke property](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#Stroke) for an SVG circle element.  This defaults to __black__. 
 - `stroke-width` defines the width of the progress arc line in pixels. This should be a value between 1 and `size` / 2. This defaults to __20__.
 - `progress` is an expression that should evaluate to a float value between 0.0 and 1.0; where 0.0 is an empty progress arc, and 1.0 is a full ring.
-- `counter-clockwise` if this attribute is present and set to a "truthy" value (true, yes, 1) the progress bar will render in a counter-clockwise direction. 
+- `counter-clockwise` is a boolean value. When "truthy" (true, yes, 1) the progress bar will render in a counter-clockwise direction.
+- `background` defines the color of the ring background. If not defined, no background is rendered. 
 
 Styling
 =======

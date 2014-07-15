@@ -24,7 +24,8 @@
     var defaults = {
         size: 200,
         strokeWidth: 20,
-        stroke: 'black'
+        stroke: 'black',
+        background: null
     };
 
     var app = angular.module('angular-progress-arc', []);
@@ -36,7 +37,8 @@
                 strokeWidth:      '@', // Width of progress arc stroke.
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
-                progress:         '&'  // Expression evaluating to float [0.0, 1.0]
+                progress:         '&', // Expression evaluating to float [0.0, 1.0]
+                background:  '@'  // Color of the background ring. Defaults to null.
             },
             compile: function (element, attr) {
 
@@ -67,6 +69,14 @@
             },
             template:
                 '<svg ng-attr-width="{{ size }}" ng-attr-height="{{ size }}">' +
+                    '<circle fill="none" ' +
+                        'ng-if="background" ' +
+                        'ng-attr-cx="{{ size / 2 }}" ' +
+                        'ng-attr-cy="{{ size / 2 }}" ' +
+                        'ng-attr-r="{{ radius }}" ' +
+                        'ng-attr-stroke="{{ background }}" ' +
+                        'ng-attr-stroke-width="{{ strokeWidthCapped }}"' +
+                        '></circle>' +
                     '<circle fill="none" ' +
                         'ng-attr-cx="{{ size / 2 }}" ' +
                         'ng-attr-cy="{{ size / 2 }}" ' +
