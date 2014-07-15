@@ -13,7 +13,7 @@
     "svg"
   ],
   "license": "MIT",
-  "homepage": "http://mathewbyrne.com/",
+  "homepage": "http://mathewbyrne.github.io/angular-progress-arc/",
   "ignore": [
     "**/.*",
     "node_modules",

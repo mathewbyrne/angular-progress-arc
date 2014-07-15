@@ -5,6 +5,8 @@ An [AngularJS](https://angularjs.org/) directive for displaying a circular progr
 
 <p align="center"><img src="http://mathewbyrne.github.io/angular-progress-arc/img/arcs.png" /></p>
 
+[Demo](http://mathewbyrne.github.io/angular-progress-arc/)
+
 Features
 ========
 
