@@ -79,6 +79,9 @@ h2 {
     display: -webkit-flex;
     -webkit-flex-direction: row;
     -webkit-flex-wrap: wrap;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-wrap: wrap;
 }
 
 .demo {
