@@ -1,0 +1,125 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700|Nunito);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Open Sans";
+    color: #333;
+    font-size: 18px;
+    margin: 0 0 60px;
+}
+
+p {
+    margin: 1em 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    display: inline-block;
+    border: 2px solid white;
+    padding: 0.5em 1.5em;
+    font-weight: normal;
+}
+
+.button:hover {
+    background-color: white;
+    color: #3080E8;
+    border-color: transparent;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 740px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #3080E8;
+    color: white;
+    padding: 4em 0;
+    text-align: center;
+}
+
+h1 {
+    font-family: Nunito;
+    font-weight: normal;
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+.demos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+}
+
+.demo {
+    width: 50%;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding: 2em 0;
+}
+
+progress-arc {
+    display: block;
+    margin-bottom: 1em;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.demo-4 circle {
+    stroke-linecap: round;
+    stroke: #F56325;
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+@media (max-width:550px) {
+    body {
+        font-size: 16px;
+    }
+    header {
+        padding: 3em 0;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .demo {
+        width: 100%;
+    }
+}

@@ -1,110 +1,50 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Angular-progress-arc by mathewbyrne</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Angular-progress-arc</h1>
-        <p>AngularJS directive for displaying a circular progress meter.</p>
-
-        <p class="view"><a href="https://github.com/mathewbyrne/angular-progress-arc">View the Project on GitHub <small>mathewbyrne/angular-progress-arc</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/mathewbyrne/angular-progress-arc/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/mathewbyrne/angular-progress-arc/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/mathewbyrne/angular-progress-arc">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="angular-progress-arc" class="anchor" href="#angular-progress-arc"><span class="octicon octicon-link"></span></a>angular-progress-arc</h1>
-
-<p>An <a href="https://angularjs.org/">AngularJS</a> directive for displaying a circular progress meter.</p>
-
-<h1>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
-
-<ul>
-<li>Displays a circular progress meter.</li>
-<li>Utilises SVG for rendering.</li>
-<li>Adjustable dimensions, color and thickness.</li>
-<li>No additional dependencies outside of AngularJS.</li>
-</ul><h1>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
-
-<pre lang="shell"><code>bower install angular-progress-arc
-</code></pre>
-
-<h1>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
-
-<p>Include the script in your application and include the <code>angular-progress-arc</code> module as a dependency in your application module.</p>
-
-<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'angular-progress-arc'</span><span class="p">]);</span>
-</pre></div>
-
-<p>Add a <code>progress-arc</code> element to your application as required.</p>
-
-<div class="highlight highlight-html"><pre><span class="nt">&lt;progress-arc</span>
-    <span class="na">size=</span><span class="s">"{integer}"</span>
-    <span class="na">stroke=</span><span class="s">"{string}"</span>
-    <span class="na">stroke-width=</span><span class="s">"{integer}"</span>
-    <span class="na">progress=</span><span class="s">"{expression}"</span>
-    <span class="na">counter-clockwise=</span><span class="s">"{string}"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/progress-arc&gt;</span>
-</pre></div>
-
-<h2>
-<a name="attributes" class="anchor" href="#attributes"><span class="octicon octicon-link"></span></a>Attributes</h2>
-
-<ul>
-<li>
-<code>size</code> defines the pixel width and height for the svg element.  This defaults to <strong>200</strong>.</li>
-<li>
-<code>stroke</code> defines the color of the progress arc. This should be a valid <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#Stroke">stroke property</a> for an SVG path element.  This defaults to <strong>black</strong>. </li>
-<li>
-<code>stroke-width</code> defines the width of the progress arc line in pixels. This should be a value between 1 and <code>size</code> / 2. This defaults to <strong>20</strong>.</li>
-<li>
-<code>progress</code> is an expression that should evaluate to a float value between 0.0 and 1.0; where 0.0 is an empty progress arc, and 1.0 is a full ring.</li>
-<li>
-<code>counter-clockwise</code> if this attribute is present and set to a "truthy" value (true, yes, 1) the progress bar will render in a counter-clockwise direction. </li>
-</ul><h1>
-<a name="styling" class="anchor" href="#styling"><span class="octicon octicon-link"></span></a>Styling</h1>
-
-<p>As well as using attributes of the directive element, a progress arc can be styled using CSS.</p>
-
-<div class="highlight highlight-css"><pre><span class="o">//</span> <span class="nt">Use</span> <span class="nt">a</span> <span class="nt">more</span> <span class="nt">complex</span> <span class="nt">selector</span> <span class="nt">in</span> <span class="nt">your</span> <span class="nt">application</span> <span class="nt">to</span> <span class="nt">avoid</span> <span class="nt">styling</span> <span class="nt">other</span> <span class="nt">SVG</span> <span class="nt">elements</span><span class="o">.</span>
-<span class="nt">path</span> <span class="p">{</span>
-    <span class="n">stroke</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="p">);</span>
-    <span class="n">stroke</span><span class="o">-</span><span class="n">linecap</span><span class="o">:</span> <span class="n">round</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>If you use CSS for styling, try to avoid setting a <code>stroke-width</code> property since this is used to calculate the position of the arc inside the SVG element.</p>
-
-<h1>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
-
-<p>angular-progress-arc is licensed under the MIT license. See LICENSE for details.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/mathewbyrne">mathewbyrne</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+<!DOCTYPE html>
+<html ng-app="angular-progress-arc-demo">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>angular-progress-arc by @mathewbyrne</title>
+    <link rel="stylesheet" href="demo.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>angular-progress-arc</h1>
+            <p>An <a href="https://angularjs.org/">AngularJS</a> directive for displaying a circular progress meter.</p>
+            <a href="http://github.com/mathewbyrne/angular-progress-arc" class="button">GitHub</a>
+        </div>
+    </header>
+    <div class="demos container">
+        <div class="demo demo-1" ng-controller="DemoCtrl">
+            <h2>Default</h2>
+            <progress-arc progress="progress"></progress-arc>
+            <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
+        </div>
+        <div class="demo demo-2" ng-controller="DemoCtrl">
+            <h2>Custom color and width</h2>
+            <progress-arc progress="progress" stroke="#3080E8" stroke-width="100"></progress-arc>
+            <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
+        </div>
+        <div class="demo demo-3" ng-controller="DemoCtrl">
+            <h2>Counter-clockwise & background</h2>
+            <progress-arc progress="progress" counter-clockwise="true" background="#eee" stroke="#3080E8"></progress-arc>
+            <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
+        </div>
+        <div class="demo demo-4" ng-controller="DemoCtrl">
+            <h2>CSS styling</h2>
+            <progress-arc progress="progress"></progress-arc>
+            <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
+        </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+    <footer>
+        <p>Created by <a href="http://github.com/mathewbyrne">@mathewbyrne</a></p>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="angular-progress-arc.min.js"></script>
+    <script>
+        angular.module('angular-progress-arc-demo', ['angular-progress-arc'])
+            .controller('DemoCtrl', function ($scope) {
+                $scope.progress = 0.75;
+            });
+    </script>
+</body>
 </html>
