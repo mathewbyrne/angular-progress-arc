@@ -76,7 +76,7 @@
             <input type="text" ng-model="background" id="background">
         </div>
         <div class="control radio">
-            <label><input type="checkbox" ng-model="counterClockwise" ng-true-value="1" ng-false-value="0" /> Counter-clockwise</label>
+            <label><input type="checkbox" ng-model="counterClockwise" ng-true-value="1" ng-false-value="" /> Counter-clockwise</label>
         </div>
     </div>
     <script src="../bower_components/angular/angular.min.js"></script>
@@ -88,7 +88,7 @@
             $scope.progress = 0.75;
             $scope.strokeWidth = 50;
             $scope.stroke = '#333';
-            $scope.counterClockwise = '0';
+            $scope.counterClockwise = '';
         });
     </script>
 </body>

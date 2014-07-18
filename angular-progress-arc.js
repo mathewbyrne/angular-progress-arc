@@ -2,25 +2,6 @@
 
     'use strict';
 
-    /**
-     * Converts a string into a boolean value if the lowercase string equals a
-     * true-like value.
-     * @param {string} input
-     * @returns {boolean}
-     */
-    var resolveBoolean = function (input) {
-        if (input && typeof input === 'string') {
-            input = input.toLowerCase();
-            var truthValues = ['true', 'yes', '1'];
-            for (var i = 0; i < truthValues.length; i++) {
-                if (truthValues[i] === input) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    };
-
     var defaults = {
         size: 200,
         strokeWidth: 20,
@@ -38,7 +19,7 @@
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
                 progress:         '&', // Expression evaluating to float [0.0, 1.0]
-                background:  '@'  // Color of the background ring. Defaults to null.
+                background:       '@'  // Color of the background ring. Defaults to null.
             },
             compile: function (element, attr) {
 
@@ -59,11 +40,6 @@
                         scope.circumference = 2 * Math.PI * scope.radius;
                     };
                     scope.$watchCollection('[size, strokeWidth]', updateRadius);
-                    scope.$watch('counterClockwise', function () {
-                        if (typeof scope.counterClockwise !== 'boolean') {
-                            scope.counterClockwise = resolveBoolean(scope.counterClockwise);
-                        }
-                    });
                     updateRadius();
                 };
             },
