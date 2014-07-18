@@ -52,7 +52,7 @@
                         'ng-attr-r="{{ radius }}" ' +
                         'ng-attr-stroke="{{ background }}" ' +
                         'ng-attr-stroke-width="{{ strokeWidthCapped }}"' +
-                        '></circle>' +
+                        '/>' +
                     '<circle fill="none" ' +
                         'ng-attr-cx="{{ size / 2 }}" ' +
                         'ng-attr-cy="{{ size / 2 }}" ' +
@@ -62,7 +62,7 @@
                         'ng-attr-stroke-dasharray="{{ circumference }}"' +
                         'ng-attr-stroke-dashoffset="{{ (counterClockwise ? -1 : 1 ) * (1 - progress()) * circumference }}"' +
                         'ng-attr-transform="rotate({{ offset }}, {{ size / 2 }}, {{ size / 2 }})"' +
-                        '></circle>' +
+                        '/>' +
                 '</svg>'
         };
     });
