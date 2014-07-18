@@ -18,7 +18,7 @@
                 strokeWidth:      '@', // Width of progress arc stroke.
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
-                progress:         '&', // Expression evaluating to float [0.0, 1.0]
+                complete:         '&', // Expression evaluating to float [0.0, 1.0]
                 background:       '@'  // Color of the background ring. Defaults to null.
             },
             compile: function (element, attr) {
@@ -60,7 +60,7 @@
                         'ng-attr-stroke="{{ stroke }}" ' +
                         'ng-attr-stroke-width="{{ strokeWidthCapped }}"' +
                         'ng-attr-stroke-dasharray="{{ circumference }}"' +
-                        'ng-attr-stroke-dashoffset="{{ (counterClockwise ? -1 : 1 ) * (1 - progress()) * circumference }}"' +
+                        'ng-attr-stroke-dashoffset="{{ (counterClockwise ? -1 : 1 ) * (1 - complete()) * circumference }}"' +
                         'ng-attr-transform="rotate({{ offset }}, {{ size / 2 }}, {{ size / 2 }})"' +
                         '/>' +
                 '</svg>'
