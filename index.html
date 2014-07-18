@@ -17,22 +17,22 @@
     <div class="demos container">
         <div class="demo demo-1" ng-controller="DemoCtrl">
             <h2>Default</h2>
-            <progress-arc progress="progress"></progress-arc>
+            <progress-arc complete="progress"></progress-arc>
             <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
         </div>
         <div class="demo demo-2" ng-controller="DemoCtrl">
             <h2>Custom color and width</h2>
-            <progress-arc progress="progress" stroke="#3080E8" stroke-width="98"></progress-arc>
+            <progress-arc complete="progress" stroke="#3080E8" stroke-width="100"></progress-arc>
             <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
         </div>
         <div class="demo demo-3" ng-controller="DemoCtrl">
             <h2>Counter-clockwise & background</h2>
-            <progress-arc progress="progress" counter-clockwise="true" background="#eee" stroke="#3080E8"></progress-arc>
+            <progress-arc complete="progress" counter-clockwise="true" background="#eee" stroke="#3080E8"></progress-arc>
             <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
         </div>
         <div class="demo demo-4" ng-controller="DemoCtrl">
             <h2>CSS styling</h2>
-            <progress-arc progress="progress"></progress-arc>
+            <progress-arc complete="progress"></progress-arc>
             <input type="range" min="0.00" max="1.00" step="0.05" ng-model="progress" />
         </div>
     </div>
