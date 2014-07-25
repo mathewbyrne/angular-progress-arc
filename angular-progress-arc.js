@@ -2,15 +2,33 @@
 
     'use strict';
 
-    var defaults = {
-        size: 200,
-        strokeWidth: 20,
-        stroke: 'black',
-        background: null
-    };
-
     var app = angular.module('angular-progress-arc', []);
-    app.directive('progressArc', function () {
+
+    app.provider('progressArcDefaults', function () {
+
+        var defaults = {
+            size: 200,
+            strokeWidth: 20,
+            stroke: 'black',
+            background: null
+        };
+
+        this.setDefault = function (name, value) {
+            defaults[name] = value;
+        };
+
+        this.$get = function () {
+            return function (attr) {
+                angular.forEach(defaults, function (value, key) {
+                    if (!attr[key]) {
+                        attr[key] = value;
+                    }
+                });
+            };
+        };
+    });
+
+    app.directive('progressArc', ['progressArcDefaults', function (progressArcDefaults) {
         return {
             restrict: 'E',
             scope: {
@@ -23,12 +41,7 @@
             },
             compile: function (element, attr) {
 
-                // Resolve default values.
-                angular.forEach(defaults, function (value, key) {
-                    if (!attr[key]) {
-                        attr[key] = value;
-                    }
-                });
+                progressArcDefaults(attr);
 
                 return function (scope, element, attr) {
                     // Firefox has a bug where it doesn't handle rotations and stroke dashes correctly.
@@ -44,27 +57,27 @@
                 };
             },
             template:
-                '<svg ng-attr-width="{{ size }}" ng-attr-height="{{ size }}">' +
+                '<svg ng-attr-width="{{size}}" ng-attr-height="{{size}}">' +
                     '<circle fill="none" ' +
                         'ng-if="background" ' +
-                        'ng-attr-cx="{{ size / 2 }}" ' +
-                        'ng-attr-cy="{{ size / 2 }}" ' +
-                        'ng-attr-r="{{ radius }}" ' +
-                        'ng-attr-stroke="{{ background }}" ' +
-                        'ng-attr-stroke-width="{{ strokeWidthCapped }}"' +
+                        'ng-attr-cx="{{size/2}}" ' +
+                        'ng-attr-cy="{{size/2}}" ' +
+                        'ng-attr-r="{{radius}}" ' +
+                        'ng-attr-stroke="{{background}}" ' +
+                        'ng-attr-stroke-width="{{strokeWidthCapped}}"' +
                         '/>' +
                     '<circle fill="none" ' +
-                        'ng-attr-cx="{{ size / 2 }}" ' +
-                        'ng-attr-cy="{{ size / 2 }}" ' +
-                        'ng-attr-r="{{ radius }}" ' +
-                        'ng-attr-stroke="{{ stroke }}" ' +
-                        'ng-attr-stroke-width="{{ strokeWidthCapped }}"' +
-                        'ng-attr-stroke-dasharray="{{ circumference }}"' +
-                        'ng-attr-stroke-dashoffset="{{ (counterClockwise ? -1 : 1 ) * (1 - complete()) * circumference }}"' +
-                        'ng-attr-transform="rotate({{ offset }}, {{ size / 2 }}, {{ size / 2 }})"' +
+                        'ng-attr-cx="{{size/2}}" ' +
+                        'ng-attr-cy="{{size/2}}" ' +
+                        'ng-attr-r="{{radius}}" ' +
+                        'ng-attr-stroke="{{stroke}}" ' +
+                        'ng-attr-stroke-width="{{strokeWidthCapped}}"' +
+                        'ng-attr-stroke-dasharray="{{circumference}}"' +
+                        'ng-attr-stroke-dashoffset="{{(counterClockwise?-1:1)*(1-complete())*circumference}}"' +
+                        'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})"' +
                         '/>' +
                 '</svg>'
         };
-    });
+    }]);
 
 })(window.angular);
