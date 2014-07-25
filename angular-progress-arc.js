@@ -15,6 +15,7 @@
 
         this.setDefault = function (name, value) {
             defaults[name] = value;
+            return this;
         };
 
         this.$get = function () {
