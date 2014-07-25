@@ -55,7 +55,7 @@ Attributes
 - `stroke` defines the color of the progress arc. This should be a valid [stroke property](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#Stroke) for an SVG circle element.  This defaults to __black__. 
 - `stroke-width` defines the width of the progress arc line in pixels. This should be a value between 1 and `size` / 2. This defaults to __20__.
 - `complete` is an expression that should evaluate to a float value between 0.0 and 1.0; where 0.0 is an empty progress arc, and 1.0 is a full ring.
-- `counter-clockwise` is a boolean value. When "truthy" (true, yes, 1) the progress bar will render in a counter-clockwise direction.
+- `counter-clockwise` is a boolean value that will render the progress arc in a counter-clockwise direction.
 - `background` defines the color of the ring background. If not defined, no background is rendered. 
 
 Styling
@@ -83,6 +83,21 @@ If you use CSS for styling, avoid setting the following properties that are used
 - `stroke-width`
 - `stroke-dasharray`
 - `stroke-dashoffset`
+
+Defaults
+========
+
+This module provides a service for configuring application-wide defaults for `progress-arc` directives.  To change default values, inject the `progressArcDefaultsProvider` into your module's config method:
+
+```javascript
+myApp.config(['progressArcDefaultsProvider', function (progressArcDefaultsProvider) {
+    progressArcDefaultsProvider
+        .setDefault('background', '#aaa')
+        .setDefault('size', 300);
+});
+```
+
+The values you can configure this way are `size`, `strokeWidth`, `stroke` and `background`.
 
 License
 =======
