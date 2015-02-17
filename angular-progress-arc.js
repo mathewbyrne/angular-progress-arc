@@ -74,8 +74,9 @@
                         'ng-attr-stroke="{{stroke}}" ' +
                         'ng-attr-stroke-width="{{strokeWidthCapped}}"' +
                         'ng-attr-stroke-dasharray="{{circumference}}"' +
-                        'ng-attr-stroke-dashoffset="{{(counterClockwise?-1:1)*(1-complete())*circumference}}"' +
-                        'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})"' +
+                        'ng-attr-stroke-dashoffset="{{(1 - complete()) * circumference}}"' +
+                        'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
+                            '{{ counterClockwise ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
                 '</svg>'
         };
