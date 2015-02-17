@@ -24,8 +24,8 @@ This module can be installed using bower:
 bower install angular-progress-arc --save
 ```
 
-Otherwise, simply add the `angular-progress-arc.min.js` file to your project. 
-    
+Otherwise, simply add the `angular-progress-arc.min.js` file to your project.
+
 Usage
 =====
 
@@ -52,16 +52,16 @@ Attributes
 ----------
 
 - `size` defines the pixel width and height for the svg element.  This defaults to __200__.
-- `stroke` defines the color of the progress arc. This should be a valid [stroke property](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#Stroke) for an SVG circle element.  This defaults to __black__. 
+- `stroke` defines the color of the progress arc. This should be a valid [stroke property](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#Stroke) for an SVG circle element.  This defaults to __black__.
 - `stroke-width` defines the width of the progress arc line in pixels. This should be a value between 1 and `size` / 2. This defaults to __20__.
 - `complete` is an expression that should evaluate to a float value between 0.0 and 1.0; where 0.0 is an empty progress arc, and 1.0 is a full ring.
-- `counter-clockwise` is a boolean value that will render the progress arc in a counter-clockwise direction.
-- `background` defines the color of the ring background. If not defined, no background is rendered. 
+- `counter-clockwise` is a boolean value that will render the progress arc in a counter-clockwise direction. Any value Javascript would recognise as true will be treated as such, with the exception of the literal string __false__ which will be treated as a boolean `false`.
+- `background` defines the color of the ring background. If not defined, no background is rendered.
 
 Styling
 =======
 
-As well as using attributes of the directive element, a progress arc can be styled using CSS. 
+As well as using attributes of the directive element, a progress arc can be styled using CSS.
 
 ```css
 // Use a more complex selector in your application to avoid styling other SVG elements.

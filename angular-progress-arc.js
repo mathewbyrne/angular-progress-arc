@@ -76,7 +76,7 @@
                         'ng-attr-stroke-dasharray="{{circumference}}"' +
                         'ng-attr-stroke-dashoffset="{{(1 - complete()) * circumference}}"' +
                         'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
-                            '{{ counterClockwise ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
+                            '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
                 '</svg>'
         };
