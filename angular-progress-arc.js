@@ -59,7 +59,7 @@
             },
             template:
                 '<svg ng-attr-width="{{size}}" ng-attr-height="{{size}}">' +
-                    '<circle fill="none" ' +
+                    '<circle id="background" fill="none" ' +
                         'ng-if="background" ' +
                         'ng-attr-cx="{{size/2}}" ' +
                         'ng-attr-cy="{{size/2}}" ' +
@@ -67,7 +67,7 @@
                         'ng-attr-stroke="{{background}}" ' +
                         'ng-attr-stroke-width="{{strokeWidthCapped}}"' +
                         '/>' +
-                    '<circle fill="none" ' +
+                    '<circle id="progress" fill="none" ' +
                         'ng-attr-cx="{{size/2}}" ' +
                         'ng-attr-cy="{{size/2}}" ' +
                         'ng-attr-r="{{radius}}" ' +
