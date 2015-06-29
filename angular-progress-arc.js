@@ -38,6 +38,7 @@
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
                 complete:         '&', // Expression evaluating to float [0.0, 1.0]
+                label:            '&', // Expression evaluating to string
                 background:       '@'  // Color of the background ring. Defaults to null.
             },
             compile: function (element, attr) {
@@ -78,6 +79,7 @@
                         'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
+                    '<text ng-if="label()" id="label" x="50%" y="50%" dy=".3em" text-anchor="middle">{{label()}}</text>' +
                 '</svg>'
         };
     }]);
