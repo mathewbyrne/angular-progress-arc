@@ -41,6 +41,10 @@
         circle {
             transition: stroke-dashoffset 0.1s linear;
         }
+        .ngpa-label {
+            font-size: 30px;
+            fill: #777;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +55,9 @@
             stroke-width="{{ strokeWidth }}"
             complete="progress"
             background="{{ background }}"
-            counter-clockwise="{{ counterClockwise }}"></progress-arc>
+            counter-clockwise="{{ counterClockwise }}"
+            label="{{ progress }}"
+            ></progress-arc>
         <div class="control">
             <label for="progress">Complete</label>
             <input type="range" min="0" max="1" step="0.01" ng-model="progress" id="progress" />

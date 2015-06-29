@@ -36,9 +36,9 @@
                 size:             '@', // Size of element in pixels.
                 strokeWidth:      '@', // Width of progress arc stroke.
                 stroke:           '@', // Color/appearance of stroke.
-                counterClockwise: '@', // Boolean value indicating
+                counterClockwise: '@', // Boolean value indicating reverse direction.
                 complete:         '&', // Expression evaluating to float [0.0, 1.0]
-                label:            '&', // Expression evaluating to string
+                label:            '@', // String value to be displayed inside arc.
                 background:       '@'  // Color of the background ring. Defaults to null.
             },
             compile: function (element, attr) {
@@ -79,7 +79,7 @@
                         'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
-                    '<text ng-if="label()" id="label" x="50%" y="50%" dy=".3em" text-anchor="middle">{{label()}}</text>' +
+                    '<text class="ngpa-label" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">{{label}}</text>' +
                 '</svg>'
         };
     }]);
