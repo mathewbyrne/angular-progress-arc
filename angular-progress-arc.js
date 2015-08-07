@@ -10,7 +10,8 @@
             size: 200,
             strokeWidth: 20,
             stroke: 'black',
-            background: null
+            background: null,
+			textval: ''
         };
 
         this.setDefault = function (name, value) {
@@ -20,9 +21,11 @@
 
         this.$get = function () {
             return function (attr) {
-                angular.forEach(defaults, function (value, key) {
+			        angular.forEach(defaults, function (value, key) {
+					
                     if (!attr[key]) {
                         attr[key] = value;
+			
                     }
                 });
             };
@@ -38,7 +41,9 @@
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
                 complete:         '&', // Expression evaluating to float [0.0, 1.0]
-                background:       '@'  // Color of the background ring. Defaults to null.
+                background:       '@',  // Color of the background ring. Defaults to null.
+				textval:			'@' //text to be displayed below the arc
+				
             },
             compile: function (element, attr) {
 
@@ -55,6 +60,7 @@
                     };
                     scope.$watchCollection('[size, strokeWidth]', updateRadius);
                     updateRadius();
+					
                 };
             },
             template:
@@ -79,6 +85,8 @@
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
                 '</svg>'
+				+
+				'<div><label>{{textval}}</label></div>'
         };
     }]);
 
