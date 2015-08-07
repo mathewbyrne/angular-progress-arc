@@ -14,17 +14,12 @@ Features
 - Utilises SVG for rendering.
 - Adjustable dimensions, color and thickness.
 - No additional dependencies outside of AngularJS.
+- Now add text that will be displaying below the progress arc
 
 Installation
 ============
 
-This module can be installed using bower:
-
-```shell
-bower install angular-progress-arc --save
-```
-
-Otherwise, simply add the `angular-progress-arc.min.js` file to your project.
+Simply download add the `angular-progress-arc.min.js` file to your project.
 
 Usage
 =====
@@ -44,7 +39,10 @@ Add a `progress-arc` element to your application as required.
     stroke-width="{integer}"
     complete="{expression}"
     counter-clockwise="{string}"
-    background="{string}">
+    background="{string}"
+	textval="{string}"
+	>
+	
 </progress-arc>
 ```
 
@@ -57,7 +55,7 @@ Attributes
 - `complete` is an expression that should evaluate to a float value between 0.0 and 1.0; where 0.0 is an empty progress arc, and 1.0 is a full ring.
 - `counter-clockwise` is a boolean value that will render the progress arc in a counter-clockwise direction. Any value Javascript would recognise as true will be treated as such, with the exception of the literal string __false__ which will be treated as a boolean `false`.
 - `background` defines the color of the ring background. If not defined, no background is rendered.
-
+- `textval` defines the text that needs to be displayed below the progress arc
 Styling
 =======
 
