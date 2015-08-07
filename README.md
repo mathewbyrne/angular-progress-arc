@@ -19,13 +19,7 @@ Features
 Installation
 ============
 
-This module can be installed using bower:
-
-```shell
-bower install angular-progress-arc --save
-```
-
-Otherwise, simply add the `angular-progress-arc.min.js` file to your project.
+Simply download add the `angular-progress-arc.min.js` file to your project.
 
 Usage
 =====
