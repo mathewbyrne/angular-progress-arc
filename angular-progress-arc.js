@@ -11,7 +11,7 @@
             strokeWidth: 20,
             stroke: 'black',
             background: null,
-			textval: ''
+			textval: null
         };
 
         this.setDefault = function (name, value) {
@@ -64,7 +64,8 @@
                 };
             },
             template:
-                '<svg ng-attr-width="{{size}}" ng-attr-height="{{size}}">' +
+			'<div>'+
+                '<svg ng-attr-width="{{size}}" ng-attr-height="{{size}}" style="display:block;margin-left:auto;margin-right:auto">' +
                     '<circle class="ngpa-background" fill="none" ' +
                         'ng-if="background" ' +
                         'ng-attr-cx="{{size/2}}" ' +
@@ -84,9 +85,9 @@
                         'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
-                '</svg>'
+                '</svg>'+'</div>'
 				+
-				'<div><label>{{textval}}</label></div>'
+				'<div ng-if="textval" style="text-align:center"><label>{{textval}}</label></div>'
         };
     }]);
 
