@@ -25,6 +25,9 @@
                         attr[key] = value;
                     }
                 });
+                if (!attr.strokeWidthBg) {
+                    attr.strokeWidthBg = attr.strokeWidth;
+                }
             };
         };
     });
@@ -35,6 +38,7 @@
             scope: {
                 size:             '@', // Size of element in pixels.
                 strokeWidth:      '@', // Width of progress arc stroke.
+                strokeWidthBg:    '@', // Width of progress arc stroke.
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
                 complete:         '&', // Expression evaluating to float [0.0, 1.0]
@@ -50,7 +54,9 @@
                     scope.offset = /firefox/i.test(navigator.userAgent) ? -89.9 : -90;
                     var updateRadius = function () {
                         scope.strokeWidthCapped = Math.min(scope.strokeWidth, scope.size / 2 - 1);
+                        scope.strokeWidthCappedBg = Math.min(scope.strokeWidthBg, scope.size / 2 - 1);
                         scope.radius = Math.max((scope.size - scope.strokeWidthCapped) / 2 - 1, 0);
+                        scope.radiusBg = Math.max((scope.size - scope.strokeWidthCappedBg) / 2 - 1, 0);
                         scope.circumference = 2 * Math.PI * scope.radius;
                     };
                     scope.$watchCollection('[size, strokeWidth]', updateRadius);
@@ -63,9 +69,9 @@
                         'ng-if="background" ' +
                         'ng-attr-cx="{{size/2}}" ' +
                         'ng-attr-cy="{{size/2}}" ' +
-                        'ng-attr-r="{{radius}}" ' +
+                        'ng-attr-r="{{radiusBg}}" ' +
                         'ng-attr-stroke="{{background}}" ' +
-                        'ng-attr-stroke-width="{{strokeWidthCapped}}"' +
+                        'ng-attr-stroke-width="{{strokeWidthCappedBg}}"' +
                         '/>' +
                     '<circle class="ngpa-progress" fill="none" ' +
                         'ng-attr-cx="{{size/2}}" ' +
