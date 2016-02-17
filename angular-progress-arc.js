@@ -2,9 +2,8 @@
 
     'use strict';
 
-    var app = angular.module('angular-progress-arc', []);
-
-    app.provider('progressArcDefaults', function () {
+    angular.module('angular-progress-arc', [])
+    .provider('progressArcDefaults', function () {
 
         var defaults = {
             size: 200,
@@ -27,9 +26,8 @@
                 });
             };
         };
-    });
-
-    app.directive('progressArc', ['progressArcDefaults', function (progressArcDefaults) {
+    })
+    .directive('progressArc', ['progressArcDefaults', function (progressArcDefaults) {
         return {
             restrict: 'E',
             scope: {
@@ -55,24 +53,24 @@
                 updateRadius();
             },
             template:
-                '<svg width="{{size}}" height="{{size}}">' +
+                '<svg ng-attr-width="{{size}}" ng-attr-height="{{size}}">' +
                     '<circle fill="none" ' +
                         'ng-if="background" ' +
-                        'cx="{{size/2}}" ' +
-                        'cy="{{size/2}}" ' +
-                        'r="{{radius}}" ' +
+                        'ng-attr-cx="{{size/2}}" ' +
+                        'ng-attr-cy="{{size/2}}" ' +
+                        'ng-attr-r="{{radius}}" ' +
                         'stroke="{{background}}" ' +
                         'stroke-width="{{strokeWidthCapped}}"' +
                         '/>' +
                     '<circle fill="none" ' +
-                        'cx="{{size/2}}" ' +
-                        'cy="{{size/2}}" ' +
-                        'r="{{radius}}" ' +
+                        'ng-attr-cx="{{size/2}}" ' +
+                        'ng-attr-cy="{{size/2}}" ' +
+                        'ng-attr-r="{{radius}}" ' +
                         'stroke="{{stroke}}" ' +
                         'stroke-width="{{strokeWidthCapped}}"' +
                         'stroke-dasharray="{{circumference}}"' +
                         'stroke-dashoffset="{{(1 - complete()) * circumference}}"' +
-                        'transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
+                        'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
                 '</svg>'
