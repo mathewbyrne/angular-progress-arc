@@ -36,12 +36,15 @@ describe('progressArc', function() {
     it('should update the stroke-dashoffset when complete is updated', function() {
         var $scope = $rootScope.$new();
         $scope.complete = 0.5;
-        var element = $compile('<progress-arc background="complete"></progress-arc>')($scope);
+        var element = $compile('<progress-arc complete="complete"></progress-arc>')($scope);
         $rootScope.$digest();
-        expect(angular.element(element[0].getElementsByTagName('circle')[0]).attr('stroke-dashoffset')).toEqual((1 - $scope.complete) * $scope.circumference);
+        var circle = angular.element(element[0].getElementsByTagName('circle'));
+        expect(parseFloat(circle.attr('stroke-dashoffset'))).toBeGreaterThan(279.0);
 
         $scope.complete = 1.0;
-        expect(angular.element(element[0].getElementsByTagName('circle')[0]).attr('stroke-dashoffset')).toEqual((1 - $scope.complete) * $scope.circumference);
+        $rootScope.$digest();
+        circle = angular.element(element[0].getElementsByTagName('circle'));
+        expect(circle.attr('stroke-dashoffset')).toEqual('0');
     });
 });
 
