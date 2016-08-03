@@ -38,7 +38,8 @@
                 stroke:           '@', // Color/appearance of stroke.
                 counterClockwise: '@', // Boolean value indicating
                 complete:         '&', // Expression evaluating to float [0.0, 1.0]
-                background:       '@'  // Color of the background ring. Defaults to null.
+                background:       '@',  // Color of the background ring. Defaults to null.
+                text:             '@' //Text to be displayed 
             },
             compile: function (element, attr) {
 
@@ -58,7 +59,7 @@
                 };
             },
             template:
-                '<svg ng-attr-width="{{size}}" ng-attr-height="{{size}}">' +
+                '<div><svg ng-attr-width="{{size}}" ng-attr-height="{{size}}">' +
                     '<circle class="ngpa-background" fill="none" ' +
                         'ng-if="background" ' +
                         'ng-attr-cx="{{size/2}}" ' +
@@ -78,7 +79,8 @@
                         'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
-                '</svg>'
+                '</svg></div>' +
+                '<div ng-if="text" style="text-align:center"><label>{{text}}</label></div>'
         };
     }]);
 
