@@ -58,6 +58,17 @@ Attributes
 - `counter-clockwise` is a boolean value that will render the progress arc in a counter-clockwise direction. Any value Javascript would recognise as true will be treated as such, with the exception of the literal string __false__ which will be treated as a boolean `false`.
 - `background` defines the color of the ring background. If not defined, no background is rendered.
 
+Webkit quirks
+=============
+
+Set offset to -89.9 (default is -90)
+
+```html
+<progress-arc
+    offset="-89.9">
+</progress-arc>
+```
+
 Styling
 =======
 
