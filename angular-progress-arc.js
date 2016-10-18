@@ -79,7 +79,7 @@
                         'ng-attr-transform="rotate({{offset}}, {{size/2}}, {{size/2}})' +
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
-                    '<text class="ngpa-label" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">{{label}}</text>' +
+                    '<text class="ngpa-label" ng-attr-x="{{size/2}}" ng-attr-y="{{size/2}}" ng-fill="{{background}}" stroke-width="0" text-anchor="middle" alignment-baseline="middle">{{label}}</text>' +
                 '</svg>'
         };
     }]);
