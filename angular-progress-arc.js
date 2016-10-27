@@ -39,6 +39,7 @@
                 counterClockwise: '@', // Boolean value indicating reverse direction.
                 complete:         '&', // Expression evaluating to float [0.0, 1.0]
                 label:            '@', // String value to be displayed inside arc.
+                subLabel:         '@', // String value to be displayed inside arc, below label.
                 background:       '@'  // Color of the background ring. Defaults to null.
             },
             compile: function (element, attr) {
@@ -80,7 +81,7 @@
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
                     '<text class="ngpa-label" ng-attr-x="{{size/2}}" ng-attr-y="{{size/2}}" ng-fill="{{background}}" stroke-width="0" text-anchor="middle" alignment-baseline="middle">{{label}}</text>' +
-                    '<text class="ngpa-sub-label" ng-attr-x="{{size/2}}" ng-attr-y="{{size*2/3}}" ng-fill="{{background}}" stroke-width="0" text-anchor="middle" alignment-baseline="middle">{{label}}</text>' +
+                    '<text class="ngpa-sub-label" ng-attr-x="{{size/2}}" ng-attr-y="{{size*2/3}}" ng-fill="{{background}}" stroke-width="0" text-anchor="middle" alignment-baseline="middle">{{subLabel}}</text>' +
                 '</svg>'
         };
     }]);
