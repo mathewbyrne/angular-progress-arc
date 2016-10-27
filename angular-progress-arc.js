@@ -80,6 +80,7 @@
                             '{{ (counterClockwise && counterClockwise != \'false\') ? \' translate(0, \' + size + \') scale(1, -1)\' : \'\' }}"' +
                         '/>' +
                     '<text class="ngpa-label" ng-attr-x="{{size/2}}" ng-attr-y="{{size/2}}" ng-fill="{{background}}" stroke-width="0" text-anchor="middle" alignment-baseline="middle">{{label}}</text>' +
+                    '<text class="ngpa-sub-label" ng-attr-x="{{size/2}}" ng-attr-y="{{size*2/3}}" ng-fill="{{background}}" stroke-width="0" text-anchor="middle" alignment-baseline="middle">{{label}}</text>' +
                 '</svg>'
         };
     }]);
